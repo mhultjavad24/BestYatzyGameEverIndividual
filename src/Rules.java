@@ -19,8 +19,12 @@ public class Rules {
         setRules(properties.getProperty("rules"));
     }
 
+    public void printRules() {
+        System.out.println(getRules());
+    }
+
     public String getRules() {
-        return "Rules: " + rules;
+        return rules;
     }
 
     private void setRules(String rules) {
