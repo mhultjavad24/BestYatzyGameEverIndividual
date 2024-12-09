@@ -14,10 +14,10 @@ public class Game {
         player = new Player();
         System.out.print("Welcome! \nUsername: " );
         String username = scanner.nextLine();
-//        player.setUsername(username);
+        player.setUsername(username);
         showColorOptions();
-            int colorOption = scanner.nextInt();
-//      player.setColor(color);
+        int colorOption = scanner.nextInt();
+        player.setColor(color);
 
         while (true) {
             showMenu();
@@ -61,6 +61,11 @@ public class Game {
 
     private void throwDice() {
 
+        /*
+        * insert If-sats för att kolla ifall Dice-listan är tom.
+        * Om ja - lägg in tärningar. If else, gör inget.
+        */
+
         //Loopar 3 gånger för 3 kast
         for (int i = 0; i < 3; i++) {
             //Ställer om round score till 0 efter varje kast
@@ -69,14 +74,14 @@ public class Game {
             //Loopar genom listan med tärningar, "rullar dem" och skriver ut resultat
             for (int j = 0; i < diceList.size() - 1; j++) {
                 diceList.get(j).rollDice();
-//                System.out.println("Dice " + (j + 1) + ": " + diceList.get(j).getValue());
-//                roundScore += diceList.get(j).getValue();
+                System.out.println("Dice " + (j + 1) + ": " + diceList.get(j).getValue());
+                roundScore += diceList.get(j).getValue();
             }
 
             //Skriver ut poängställning
-//            System.out.println("Round score: " + roundScore +
-//                    "\nTotal score: " + player.getScore());
-//            player.addScore(roundScore);
+            System.out.println("Round score: " + roundScore +
+                    "\nTotal score: " + player.getScore());
+            player.addScore(roundScore);
 
         }
     }
