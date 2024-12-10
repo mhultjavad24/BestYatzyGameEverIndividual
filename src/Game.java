@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Game {
@@ -14,10 +13,10 @@ public class Game {
         player = new Player();
         System.out.print("Welcome! \nUsername: " );
         String username = scanner.nextLine();
-        player.setUsername(username);
+        player.setName(username);
         showColorOptions();
         int colorOption = scanner.nextInt();
-        player.setColor(color);
+//        player.setColor(color);
 
         while (true) {
             showMenu();

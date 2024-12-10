@@ -5,7 +5,10 @@ public class Dice {
 
     public void rollDice() {
 
+    }
 
+    public int getValue() {
+        return value;
     }
 
 }
