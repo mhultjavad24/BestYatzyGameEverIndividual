@@ -7,6 +7,13 @@ public class Player extends Person{
     private Color color2;
     private int score;
 
+    public int getScore() {
+        return score;
+    }
+
+    public void addScore(int addedScore) {
+        score += addedScore;
+    }
 
 
 }
