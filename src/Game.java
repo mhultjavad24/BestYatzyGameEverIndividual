@@ -81,12 +81,10 @@ public class Game {
 
             //Skriver ut poängställning
             player.addScore(roundScore);
-            System.out.println("Round score: " + roundScore +
-                    "\nTotal score: " + player.getScore());
-
-            //Tryck enter för nästa kast
-
+            System.out.println("Round score: " + roundScore + "\n");
         }
+
+        System.out.println("Final score: " + player.getScore()+ "\n");
     }
 
     public static List<Dice> getDice(int amountOfDice){

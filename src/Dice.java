@@ -33,7 +33,7 @@ public class Dice {
         }
         catch (IOException e){
             e.printStackTrace();
-            System.out.println("Kunde inte läsa properties");
+            System.out.println("File could not be loaded");
         }
         this.sides = Integer.parseInt(properties.getProperty("sides", "6"));
     }

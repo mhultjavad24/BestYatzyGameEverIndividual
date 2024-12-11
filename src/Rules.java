@@ -12,7 +12,7 @@ public class Rules {
         try {
             properties.load(new FileInputStream("src/Rules.properties"));
         } catch (Exception e) {
-            System.out.println("Rules file could not be loaded");
+            System.out.println("File could not be loaded");
             e.printStackTrace();
         }
 
