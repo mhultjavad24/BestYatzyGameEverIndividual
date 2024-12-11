@@ -1,14 +1,15 @@
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Game {
 
-    Rules rules;
-    ArrayList<Dice> diceList;
-    Player player;
+    private Rules rules;
+    private List<Dice> diceList;
+    private Player player;
+    private Scanner scanner = new Scanner(System.in);
 
     public Game() {
-        Scanner scanner = new Scanner(System.in);
 
         player = new Player();
         System.out.print("Welcome! \nUsername: " );
@@ -53,36 +54,47 @@ public class Game {
     private void showColorOptions() {
         System.out.println("""
                 Please choose a color:
-                1. Red
+                1. Red 
                 2. Green
                 3. Blue""");
     }
 
     private void throwDice() {
-
-        /*
-        * insert If-sats för att kolla ifall Dice-listan är tom.
-        * Om ja - lägg in tärningar. If else, gör inget.
-        */
+        //player.setScore(0); //Återställer score efter varje spel.
+        if (diceList == null) {
+            diceList = getDice(5);
+        }
 
         //Loopar 3 gånger för 3 kast
         for (int i = 0; i < 3; i++) {
+            System.out.println("Throw " + (i+1) + ":");
             //Ställer om round score till 0 efter varje kast
             int roundScore = 0;
 
             //Loopar genom listan med tärningar, "rullar dem" och skriver ut resultat
-            for (int j = 0; i < diceList.size() - 1; j++) {
-                diceList.get(j).rollDice();
-                System.out.println("Dice " + (j + 1) + ": " + diceList.get(j).getValue());
-                roundScore += diceList.get(j).getValue();
+            Dice.reRollAll(diceList);
+            System.out.println("Dice rolled: ");
+            for (int j = 0; j < diceList.size() ; j++) {
+                System.out.println(diceList.get(j).getPips() + " ");
+                roundScore += diceList.get(j).getPips();
             }
 
             //Skriver ut poängställning
+            player.addScore(roundScore);
             System.out.println("Round score: " + roundScore +
                     "\nTotal score: " + player.getScore());
-            player.addScore(roundScore);
+
+            //Tryck enter för nästa kast
 
         }
+    }
+
+    public static List<Dice> getDice(int amountOfDice){
+        List<Dice> dice = new ArrayList<>();
+        for(int i = 0; i < amountOfDice; i++){
+            dice.add(new Dice());
+        }
+        return dice;
     }
 
     public static void main(String[] args) {
