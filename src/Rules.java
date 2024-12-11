@@ -3,28 +3,37 @@ import java.util.Properties;
 
 public class Rules {
 
+    private static Rules instance;
     private String rules;
 
-    public Rules() {
 
+//     Singleton
+//     Hidden constructor
+//     Only way to create an instance of Rules is through
+//     the static method getRules()
+
+    private Rules() {
         Properties properties = new Properties();
 
         try {
             properties.load(new FileInputStream("src/Rules.properties"));
         } catch (Exception e) {
-            System.out.println("Rules file could not be loaded");
+            System.out.println("File could not be loaded");
             e.printStackTrace();
         }
 
         setRules(properties.getProperty("rules"));
     }
 
-    public void printRules() {
-        System.out.println(getRules());
+    public static Rules getRules() {
+        if (instance == null) {
+            instance = new Rules();
+        }
+        return instance;
     }
 
-    public String getRules() {
-        return rules;
+    public void printRules() {
+        System.out.println(rules);
     }
 
     private void setRules(String rules) {
