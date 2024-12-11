@@ -31,7 +31,7 @@ public class Game {
                     break;
                 case 3: //Rules
                     if (rules == null) {
-                        rules = new Rules();
+                        rules = Rules.getRules();
                     }
                     rules.printRules();
                     break;
