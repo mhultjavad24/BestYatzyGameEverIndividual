@@ -8,6 +8,7 @@ public class Game {
     private List<Dice> diceList;
     private Player player;
     private Scanner scanner = new Scanner(System.in);
+    private static int bonus_value = 50;
 
     public Game() {
 
@@ -103,7 +104,7 @@ public class Game {
 
     private static int bonusAmount(List<Dice> diceList){
         if(isBonusWon(diceList)){
-            return 50;
+            return bonus_value;
         } else{
             return 0;
         }
@@ -116,7 +117,7 @@ public class Game {
             if(d.getPips() != firstDice){
                 return false;
             }
-        }return true;
+        } return true;
     }
 
 
