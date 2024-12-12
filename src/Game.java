@@ -84,7 +84,13 @@ public class Game {
             System.out.println("Round score: " + roundScore + "\n");
         }
 
+        int bonus = bonusAmount(diceList);
+        player.addScore(bonus);
         System.out.println("Final score: " + player.getScore()+ "\n");
+
+        if(bonus > 0){
+            System.out.println("Congratulations on five of a kind! You got a bonus of " + bonus + ". Points");
+        }
     }
 
     public static List<Dice> getDice(int amountOfDice){
@@ -94,6 +100,26 @@ public class Game {
         }
         return dice;
     }
+
+    private static int bonusAmount(List<Dice> diceList){
+        if(isBonusWon(diceList)){
+            return 50;
+        } else{
+            return 0;
+        }
+    }
+
+    private static boolean isBonusWon(List<Dice> diceList){
+
+        int firstDice = diceList.get(0).getPips();
+        for(Dice d : diceList){
+            if(d.getPips() != firstDice){
+                return false;
+            }
+        }return true;
+    }
+
+
 
     public static void main(String[] args) {
         new Game();
