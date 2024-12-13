@@ -7,11 +7,13 @@ public class Game {
     private Rules rules;
     private List<Dice> diceList;
     private Player player;
+    private HighScore highScore;
     private Scanner scanner = new Scanner(System.in);
     private static int bonus_value = 50;
 
     public Game() {
 
+        highScore = HighScore.getInstance();
         player = new Player();
         System.out.print("Welcome! \nUsername: " );
         String username = scanner.nextLine();
@@ -29,6 +31,7 @@ public class Game {
                     throwDice();
                     break;
                 case 2: //Highscore
+                    highScore.printHighScore();
                     break;
                 case 3: //Rules
                     if (rules == null) {
@@ -93,6 +96,8 @@ public class Game {
         if(bonus > 0){
             System.out.println("Congratulations on five of a kind! You got a bonus of " + bonus + ". Points");
         }
+
+        this.highScore.addScore(player);
     }
 
     public static List<Dice> getDice(int amountOfDice){
