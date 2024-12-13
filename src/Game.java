@@ -62,6 +62,7 @@ public class Game {
 
     private void throwDice() {
         //player.setScore(0); //Återställer score efter varje spel.
+        AudioPlayer.playDiceRollSound();
         if (diceList == null) {
             diceList = getDice(5);
         }
