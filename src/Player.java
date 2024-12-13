@@ -1,10 +1,7 @@
 import java.awt.*;
 
-public class Player extends Person{
-
-    //Den som har hand om färg får bestämma hur man vill ha färger
+public class Player extends Person {
     private String color;
-    private Color color2;
     private int score;
 
     public int getScore() {
@@ -15,5 +12,21 @@ public class Player extends Person{
         score += addedScore;
     }
 
+    public void setScore(int score) {
+        this.score = score;
+    }
 
+    public String getColor() {
+        this.color = "Green";
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    @Override
+    public String toString() {
+        return this.name + " " + "(" + this.getColor().toUpperCase() +")" + ": " + this.score;
+    }
 }
