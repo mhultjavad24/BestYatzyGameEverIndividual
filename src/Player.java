@@ -16,6 +16,10 @@ public class Player extends Person {
         this.score = score;
     }
 
+    public void resetScore() {
+        score = 0;
+    }
+
     public String getColor() {
         this.color = "Green";
         return color;

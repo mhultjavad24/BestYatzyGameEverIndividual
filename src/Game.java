@@ -98,6 +98,8 @@ public class Game {
         }
 
         this.highScore.addScore(player);
+        // need to reset the score when the game is over
+        player.resetScore();
     }
 
     public static List<Dice> getDice(int amountOfDice){
