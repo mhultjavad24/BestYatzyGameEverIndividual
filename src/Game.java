@@ -20,7 +20,7 @@ public class Game {
         player.setName(username);
         showColorOptions();
         int colorOption = scanner.nextInt();
-//        player.setColor(color);
+        player.setColor(colorOption);
 
         while (true) {
             showMenu();

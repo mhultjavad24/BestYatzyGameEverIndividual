@@ -36,7 +36,7 @@ public class HighScore {
         // Sort on score
         playerScores.sort((p1, p2) -> p2.getScore() - p1.getScore());
         for (Player p : playerScores) {
-            System.out.println(p);
+            System.out.println(p.getColorCode() + p.getName() + "\u001B[0m" + " : " + p.getScore());
         }
     }
 
@@ -50,14 +50,21 @@ public class HighScore {
                  BufferedReader bufferedReader = new BufferedReader(reader)) {
                 String line;
                 while ((line = bufferedReader.readLine()) != null) {
-                    String[] parts = line.split(": ");
-                    if (parts.length == 2) {
+                    String[] parts = line.split(",");
+                    if (parts.length == 3) {
                         Player p = new Player();
                         String[] nameParts = parts[0].split(" ");
                         p.setName(nameParts[0]);
-                        p.setColor(nameParts[1].trim().replace("(", "").replace(")", ""));
+                        String colorString = parts[1].trim().toUpperCase();
+                        int colorInt = switch (colorString) {
+                            case "RED" -> 1;
+                            case "GREEN" -> 2;
+                            case "BLUE" -> 3;
+                            default -> 0; // Default color or error handling
+                        };
+                        p.setColor(colorInt);
                         p.setName(parts[0]);
-                        int score = Integer.parseInt(parts[1]);
+                        int score = Integer.parseInt(parts[2]);
                         p.setScore(score);
                         playerScores.add(p);
                     }
@@ -68,6 +75,4 @@ public class HighScore {
         }
         return playerScores;
     }
-
-
 }
