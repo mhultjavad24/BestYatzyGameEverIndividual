@@ -1,8 +1,10 @@
-import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Player extends Person {
     private String color;
     private int score;
+    private List<Integer> sessionScores = new ArrayList<Integer>();
 
     public int getScore() {
         return score;
@@ -17,6 +19,7 @@ public class Player extends Person {
     }
 
     public void resetScore() {
+        this.sessionScores.add(score);
         score = 0;
     }
 
@@ -42,5 +45,9 @@ public class Player extends Person {
     @Override
     public String toString() {
         return this.name + "," + color +"," + this.score;
+    }
+
+    public java.util.List<Integer> getSessionScores() {
+        return sessionScores;
     }
 }

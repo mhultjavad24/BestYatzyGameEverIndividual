@@ -3,13 +3,13 @@ import java.io.File;
 import java.io.IOException;
 
 public class AudioPlayer {
+    private String soundFilePath;
 
-    public static void playDiceRollSound() {
-        String filePath = "dice.wav";
-        AudioPlayer.playSound(filePath);
+    public AudioPlayer(String soundFilePath) {
+        this.soundFilePath = soundFilePath;
     }
 
-    private static void playSound(String soundFilePath) {
+    public void playSound() {
         try {
             File soundFile = new File(soundFilePath);
             AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(soundFile);
@@ -35,7 +35,6 @@ public class AudioPlayer {
             while (clip.isRunning()) {
                 Thread.sleep(100);
             }
-
 
         } catch (UnsupportedAudioFileException | IOException | LineUnavailableException | InterruptedException e) {
             e.printStackTrace();
